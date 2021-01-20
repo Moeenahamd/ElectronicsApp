@@ -1,0 +1,16 @@
+
+            <select data-cy="grid-layout-select" class="form-control" [(ngModel)]="activeGridLayout" (ngModelChange)="onSelectLayout($event)">
+              <option selected [ngValue]="initialLayout">Select a Layout</option>
+              <!-- <ng-container *ngFor="let layout of gridLayouts; trackBy: trackByFn">
+                <option *ngIf="!layout.IsDefault" [ngClass]="{'public-layout': layout.IsPublic}" [ngValue]="layout">
+                  {{ layout.GridLayoutName }}
+                </option>
+              </ng-container> -->
+              <ng-container *ngFor="let layout of gridLayouts">
+                <option [ngClass]="{'public-layout': layout.IsPublic}" [ngValue]="layout">
+                  {{ layout.GridLayoutName }}
+                  <span *ngIf="layout.IsPinnedToTop"><i class="fa fa-arrow-circle-o-down" style="color: black;"></i></span>
+                  <span *ngIf="layout.IsDefault">&nbsp;&#xf192;</span>
+                </option>
+              </ng-container>
+            </select>
